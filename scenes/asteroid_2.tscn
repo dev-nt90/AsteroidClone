@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhvnh4ygv0qwm"]
+
+[ext_resource type="Script" path="res://scripts/Asteroid2.gd" id="1_ue1tx"]
+[ext_resource type="PackedScene" uid="uid://ckahrc0i8bong" path="res://scenes/asteroid_generator.tscn" id="2_ssydo"]
+
+[node name="Asteroid2" type="RigidBody2D"]
+gravity_scale = 0.0
+can_sleep = false
+script = ExtResource("1_ue1tx")
+
+[node name="AsteroidGenerator" parent="." instance=ExtResource("2_ssydo")]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+
+[node name="Line2D" type="Line2D" parent="."]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 20
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
